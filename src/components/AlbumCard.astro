@@ -2,7 +2,7 @@
 const { title, artist, cover, link} = Astro.props;
 ---
 <a href={link} class="card">
-  <img src={cover} alt={title} />
+  <img transition:name={title} src={cover} alt={title} />
   <h4>{title}</h4>
   <p>{artist}</p>
 </a>

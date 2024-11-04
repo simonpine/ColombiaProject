@@ -1,0 +1,170 @@
+---
+import Layout from "../../layouts/Layout.astro";
+export async function getStaticPaths() {
+  const pages = [
+    {
+      title: "Nacimiento en el Campo",
+      artist: "Simon Pineda",
+      cover:
+        "https://firebasestorage.googleapis.com/v0/b/typechat-a0538.appspot.com/o/img%2FDALL%C2%B7E%202024-11-03%2023.13.49%20-%20Album%20cover%20style%20image%20representing%20a%20rural%20Colombian%20village%20in%20the%201940s.%20Include%20natural%20elements%20like%20trees%2C%20mountains%2C%20a%20small%20farmhouse%2C%20and%20a%20.webp8631?alt=media&token=469ec77f-3a5a-4dd3-8825-821e750fe4c0",
+      link: "1234",
+      songs: [],
+    },
+    {
+      title: "Matrimonio a los 15 Años",
+      artist: "Manuela Pineda",
+      cover:
+        "https://firebasestorage.googleapis.com/v0/b/typechat-a0538.appspot.com/o/img%2FDALL%C2%B7E%202024-11-03%2023.14.17%20-%20Album%20cover%20style%20image%20inspired%20by%20elements%20from%20a%20rural%20Colombian%20village%20in%20the%201940s%20and%20a%20family%20migrating%20to%20Bogot%C3%A1%20in%20the%201960s.%20Represent%20a%20yo.webp6801?alt=media&token=9c2ce287-a4ec-48c6-9b53-0e076d659c51",
+      link: "4321",
+      songs: [],
+    },
+    {
+      title: "Migración a Bogotá",
+      artist: "Simon Pineda",
+      cover:
+        "https://firebasestorage.googleapis.com/v0/b/typechat-a0538.appspot.com/o/img%2FDALL%C2%B7E%202024-11-03%2023.14.11%20-%20Album%20cover%20style%20image%20representing%20a%20family%20migrating%20to%20Bogot%C3%A1%20in%20the%201960s.%20Show%20elements%20like%20an%20old%20bus%2C%20suitcases%2C%20a%20mother%20holding%20her%20childre.webp9271?alt=media&token=22caadcb-fee8-4cbf-8037-eea1bb95641b",
+      link: "2314",
+      songs: [],
+    },
+    {
+      title: "Costurera y Cabeza de Hogar",
+      artist: "Manuela Pineda",
+      cover:
+        "https://firebasestorage.googleapis.com/v0/b/typechat-a0538.appspot.com/o/img%2FDALL%C2%B7E%202024-11-03%2023.14.19%20-%20Album%20cover%20style%20image%20inspired%20by%20elements%20from%20a%20rural%20Colombian%20village%20in%20the%201940s%20and%20a%20family%20migrating%20to%20Bogot%C3%A1%20in%20the%201960s.%20Represent%20a%20wo.webp5821?alt=media&token=bf3eea3e-9225-4773-97b5-c2bf24c63859",
+      link: "1423",
+      songs: [],
+    },
+  ];
+  return pages.map(({ link, title, cover, artist }) => {
+    return {
+      params: { link },
+      props: { title, cover, artist },
+    };
+  });
+}
+
+const { title, cover, artist } = Astro.props;
+---
+
+<Layout>
+  <section class="Begin">
+    <div class="Cover">
+      <img
+        class="Vinilo"
+        alt="Disco de vinilo"
+        src="https://firebasestorage.googleapis.com/v0/b/typechat-a0538.appspot.com/o/img%2FVinyl-Disk-PNG-Photo.png2091?alt=media&token=010a2cf8-8acf-4ff2-8362-e2dae18a9b98"
+      />
+      <div class="Bac"></div>
+      <img
+        transition:name={title}
+        class="CoverImage"
+        alt="Portada del album"
+        src={cover}
+      />
+    </div>
+    <div class="ContentStart">
+      <h1>{title}</h1>
+      <h2>{artist}</h2>
+      <h3>Podcast - 2024</h3>
+      <button class="play">Reproducir 💿</button>
+    </div>
+  </section>
+  <!-- <p>{link}</p> -->
+</Layout>
+
+<style>
+  @keyframes slide-in {
+    from {
+      left: -90px;
+    }
+
+    to {
+      left: 30px;
+    }
+  }
+  .ContentStart {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  @keyframes Rotatin {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .Bac{
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    background-color: #F1F5F9;
+    border-radius: 50%;
+    z-index: 0;
+  }
+  .play {
+    background-color: #e5e7eb;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    color: #c00044;
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .play .icon {
+    margin-right: 8px;
+  }
+
+  .play:hover {
+    background-color: #e6e6e9;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+  h3 {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  .Begin {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    height: fit-content;
+    gap: 2rem;
+  }
+  .Cover {
+    position: relative;
+    width: 780px;
+    /* width: fit-content; */
+    display: flex;
+    align-items: center;
+  }
+  .Vinilo {
+    animation: slide-in 1s ease;
+    animation-delay: 0.3s;
+    position: absolute;
+    animation-fill-mode: forwards;
+
+    left: -90px;
+    width: 600px;
+  }
+  .Rotanding {
+    animation: Rotatin 5s linear infinite;
+  }
+  .CoverImage {
+    position: relative;
+    width: 450px;
+    border-radius: 10px;
+  }
+</style>
