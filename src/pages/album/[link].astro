@@ -1,4 +1,5 @@
 ---
+import type { AnyZodObject } from "astro:schema";
 import Layout from "../../layouts/Layout.astro";
 export async function getStaticPaths() {
   const pages = [
@@ -16,7 +17,20 @@ export async function getStaticPaths() {
       cover:
         "https://firebasestorage.googleapis.com/v0/b/typechat-a0538.appspot.com/o/img%2FDALL%C2%B7E%202024-11-03%2023.14.17%20-%20Album%20cover%20style%20image%20inspired%20by%20elements%20from%20a%20rural%20Colombian%20village%20in%20the%201940s%20and%20a%20family%20migrating%20to%20Bogot%C3%A1%20in%20the%201960s.%20Represent%20a%20yo.webp6801?alt=media&token=9c2ce287-a4ec-48c6-9b53-0e076d659c51",
       link: "4321",
-      songs: [],
+      songs: [
+        {
+          title: "Narracion de la historia",
+          duration: "1:45",
+        },
+        {
+          title: "Canción 2",
+          duration: "4:12",
+        },
+        {
+          title: "Canción 3",
+          duration: "2:30",
+        },
+      ],
     },
     {
       title: "Migración a Bogotá",
@@ -35,40 +49,55 @@ export async function getStaticPaths() {
       songs: [],
     },
   ];
-  return pages.map(({ link, title, cover, artist }) => {
+  return pages.map(({ link, title, cover, artist, songs }) => {
     return {
       params: { link },
-      props: { title, cover, artist },
+      props: { title, cover, artist, songs },
     };
   });
 }
 
-const { title, cover, artist } = Astro.props;
+const { title, cover, artist, songs } = Astro.props;
 ---
 
 <Layout>
-  <section class="Begin">
-    <div class="Cover">
-      <img
-        class="Vinilo"
-        alt="Disco de vinilo"
-        src="https://firebasestorage.googleapis.com/v0/b/typechat-a0538.appspot.com/o/img%2FVinyl-Disk-PNG-Photo.png2091?alt=media&token=010a2cf8-8acf-4ff2-8362-e2dae18a9b98"
-      />
-      <div class="Bac"></div>
-      <img
-        transition:name={title}
-        class="CoverImage"
-        alt="Portada del album"
-        src={cover}
-      />
-    </div>
-    <div class="ContentStart">
-      <h1>{title}</h1>
-      <h2>{artist}</h2>
-      <h3>Podcast - 2024</h3>
-      <button class="play">Reproducir 💿</button>
-    </div>
-  </section>
+  <main>
+    <section class="Begin">
+      <div class="Cover">
+        <img
+          class="Vinilo"
+          alt="Disco de vinilo"
+          src="https://firebasestorage.googleapis.com/v0/b/typechat-a0538.appspot.com/o/img%2FVinyl-Disk-PNG-Photo.png2091?alt=media&token=010a2cf8-8acf-4ff2-8362-e2dae18a9b98"
+        />
+        <div class="Bac"></div>
+        <img
+          transition:name={title}
+          class="CoverImage"
+          alt="Portada del album"
+          src={cover}
+        />
+      </div>
+      <div class="ContentStart">
+        <h1>{title}</h1>
+        <h2>{artist}</h2>
+        <h3>Podcast - 2024</h3>
+        <button class="play">Reproducir 💿</button>
+      </div>
+    </section>
+    <section class="SongCOnt">
+      {
+        songs.map((song: any, index) => (
+          <button class="song-item">
+            <div>
+              <span class="track-number">{index + 1}</span>
+              <h5 class="title">{song.title}</h5>
+            </div>
+            <span class="duration">{song.duration}</span>
+          </button>
+        ))
+      }
+    </section>
+  </main>
   <!-- <p>{link}</p> -->
 </Layout>
 
@@ -97,11 +126,18 @@ const { title, cover, artist } = Astro.props;
       transform: rotate(360deg);
     }
   }
-  .Bac{
+  .SongCOnt{
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-top: #cccccc 1px solid;
+  }
+  .Bac {
     position: absolute;
     width: 450px;
     height: 450px;
-    background-color: #F1F5F9;
+    background-color: #f1f5f9;
     border-radius: 50%;
     z-index: 0;
   }
@@ -126,7 +162,7 @@ const { title, cover, artist } = Astro.props;
     background-color: #e6e6e9;
   }
   h1 {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
   h2 {
     font-size: 1.4rem;
@@ -136,16 +172,50 @@ const { title, cover, artist } = Astro.props;
     font-size: 1rem;
     font-weight: 400;
   }
+  .song-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background: none;
+    border: none;
+    div {
+      display: flex;
+      gap: 1rem;
+      h5 {
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: #575757;
+      }
+      span {
+        font-size: 1.2rem;
+        color: #575757;
+        font-weight: 500;
+      }
+    }
+    /* border-top: 1px solid #cccccc; */
+    border-bottom: 1px solid #cccccc;
+    &:hover {
+      cursor: pointer;
+      background-color: #e7eaee;
+      h5 {
+        color: #515863;
+      }
+    }
+  }
+  .duration {
+    font-size: 1.2rem;
+    color: #575757;
+  }
   .Begin {
     display: flex;
     justify-content: space-between;
     align-items: end;
     height: fit-content;
-    gap: 2rem;
+    gap: 9rem;
   }
   .Cover {
     position: relative;
-    width: 780px;
+    /* width: 780px; */
     /* width: fit-content; */
     display: flex;
     align-items: center;
