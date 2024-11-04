@@ -1,0 +1,9 @@
+---
+const { title, artist, image} = Astro.props;
+// console.log(album);
+---
+<div class="card">
+  <img src={image} alt={title} />
+  <h2>{title}</h2>
+  <p>{artist}</p>
+</div>

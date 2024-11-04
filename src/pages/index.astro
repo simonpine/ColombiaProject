@@ -1,7 +1,7 @@
 ---
-import { ViewTransitions } from "astro:transitions";
-// import AlbumCard from '../components/AlbumCard.astro';
+import AlbumCard from '../components/AlbumCard.astro';
 import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
 
 const albums = [
 	{
@@ -19,54 +19,32 @@ const albums = [
 	// Agrega más álbumes según sea necesario
 ];
 ---
+<Layout>
+	<main>
+		<section class="hero" >
+			<div>
+				<img alt="Bertilde y Emiliano almorzando sopa de menudencias con nectar" class="heroImage" src="https://firebasestorage.googleapis.com/v0/b/typechat-a0538.appspot.com/o/img%2Fimage.jpg581?alt=media&token=f9a54218-72a4-4568-84d3-31253ebf4e79" alt="Bertilde and Emiliano" />
+			</div>
+			<div class="cta">
+				<h1>Un podcast de Bertilde</h1>
+				<p>
+					La historia de Bertilde Pachón es un reflejo de las dificultades y desafíos que muchas mujeres colombianas enfrentaron durante el siglo XX. Nacida en una comunidad rural en Cundinamarca, Bertilde vivió en un contexto de pobreza y violencia, enfrentándose a matrimonios arreglados, la migración a una ciudad desconocida, y la necesidad de convertirse en la principal proveedora de su hogar. A través de esta serie de podcast, exploraremos cómo Bertilde desafió las normas sociales de su época, se adaptó a los cambios y luchó incansablemente para asegurar el bienestar de su familia. Su vida es una lección de resiliencia, adaptación y fuerza en medio de un entorno adverso. Acompáñanos en este viaje para conocer más sobre su increíble historia.
+				</p>
+				<a href="/fuentes">Fuentes secundarias <span>👀</span></a>
+			</div>
+			
+		</section>
+		<!-- <section>
+			<h2>Álbumes Reproducidos Recientemente</h2>
+			<div class="album-grid">
+				{
+					albums.map((album) => (
+						<AlbumCard {...album} />
+						<div class="album-card"></div>
+					))
+				}
+			</div>
+		</section> -->
+	</main>
+</Layout>
 
-<html>
-	<head>
-		<title>Historia de Bertilde</title>
-		<ViewTransitions />
-		<meta charset="UTF-8">
-
-	</head>
-	<body>
-		<header>
-			<h1>Astro Records</h1>
-		</header>
-		<main>
-			<section class="hero" >
-				<div>
-					<img class="heroImage" src="https://firebasestorage.googleapis.com/v0/b/typechat-a0538.appspot.com/o/img%2Fimage.jpg581?alt=media&token=f9a54218-72a4-4568-84d3-31253ebf4e79" alt="Bertilde and Emiliano" />
-					<h2>Escucha tu música favorita</h2>
-				</div>
-				<div class="cta">
-					<h1></h1>
-					<p>
-						La historia de Bertilde Pachón es un reflejo de las dificultades y desafíos que muchas mujeres colombianas enfrentaron durante el siglo XX. Nacida en una comunidad rural en Cundinamarca, Bertilde vivió en un contexto de pobreza y violencia, enfrentándose a matrimonios arreglados, la migración a una ciudad desconocida, y la necesidad de convertirse en la principal proveedora de su hogar. A través de este podcast, exploraremos cómo Bertilde desafió las normas sociales de su época, se adaptó a los cambios y luchó incansablemente para asegurar el bienestar de su familia. Su vida es una lección de resiliencia, adaptación y fuerza en medio de un entorno adverso. Acompáñanos en este viaje para conocer más sobre su increíble historia.
-					</p>
-				</div>
-			</section>
-			<section>
-				<h2>Álbumes Reproducidos Recientemente</h2>
-				<div class="album-grid">
-					{
-						albums.map((album) => (
-							// <AlbumCard {...album} />
-							<div class="album-card"></div>
-						))
-					}
-				</div>
-			</section>
-		</main>
-		<footer>
-			<!-- <p>
-				Este sitio es una demostración de una SPA construida con Astro
-				3, utilizando la API de Transiciones de Vista y "islas"
-				persistentes.
-			</p>
-			<p>
-				Hecho con ❤️ por <a href="https://twitter.com/maxiferreira"
-					>Maxi Ferreira</a
-				> — <a href="https://docs.astro.build">Aprende más</a>.
-			</p> -->
-		</footer>
-	</body>
-</html>

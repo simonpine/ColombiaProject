@@ -1,0 +1,33 @@
+---
+import { ViewTransitions } from "astro:transitions";
+---
+
+<html>
+    <head>
+        <title>Historia de Bertilde</title>
+        <ViewTransitions />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Esta es la historia de Bertilde Pachón, una mujer colombiana que enfrentó desafíos y dificultades en el siglo XX. Acompáñanos en este viaje para conocer más sobre su increíble historia."
+        />
+        <link rel="icon" href="../img/colombia.png" />
+    </head>
+    <body>
+        <header>
+            <a href="./" class="HomeButton"
+                ><img
+                    src="https://firebasestorage.googleapis.com/v0/b/typechat-a0538.appspot.com/o/img%2Fcolombia.png9701?alt=media&token=3d42351d-4e51-4e2d-98f4-8845224741b0"
+                /><h2>Narrativa</h2></a
+            >
+        </header>
+
+        <slot />
+
+        <footer>
+            <p>Hecho por Simon Pineda</p>
+            <p>202410683</p>
+        </footer>
+    </body>
+</html>
