@@ -5,18 +5,29 @@ import Layout from "../layouts/Layout.astro";
 
 const albums = [
 	{
-		title: "Hot Fuss",
-		artist: "The Killers",
-		cover: "/images/hot-fuss.jpg",
+		title: "Nacimiento en el Campo",
+		artist: "Simon Pineda",
+		cover: "https://firebasestorage.googleapis.com/v0/b/typechat-a0538.appspot.com/o/img%2FDALL%C2%B7E%202024-11-03%2023.13.49%20-%20Album%20cover%20style%20image%20representing%20a%20rural%20Colombian%20village%20in%20the%201940s.%20Include%20natural%20elements%20like%20trees%2C%20mountains%2C%20a%20small%20farmhouse%2C%20and%20a%20.webp8631?alt=media&token=469ec77f-3a5a-4dd3-8825-821e750fe4c0",
 		link: "/album/2177412",
 	},
 	{
-		title: "First Impressions of Earth",
-		artist: "The Strokes",
-		cover: "/images/first-impressions.jpg",
+		title: "Matrimonio a los 15 Años",
+		artist: "Manuela Pineda",
+		cover: "https://firebasestorage.googleapis.com/v0/b/typechat-a0538.appspot.com/o/img%2FDALL%C2%B7E%202024-11-03%2023.14.17%20-%20Album%20cover%20style%20image%20inspired%20by%20elements%20from%20a%20rural%20Colombian%20village%20in%20the%201940s%20and%20a%20family%20migrating%20to%20Bogot%C3%A1%20in%20the%201960s.%20Represent%20a%20yo.webp6801?alt=media&token=9c2ce287-a4ec-48c6-9b53-0e076d659c51",
 		link: "/album/2113921",
 	},
-	// Agrega más álbumes según sea necesario
+	{
+		title: "Migración a Bogotá",
+		artist: "Simon Pineda",
+		cover: "https://firebasestorage.googleapis.com/v0/b/typechat-a0538.appspot.com/o/img%2FDALL%C2%B7E%202024-11-03%2023.14.11%20-%20Album%20cover%20style%20image%20representing%20a%20family%20migrating%20to%20Bogot%C3%A1%20in%20the%201960s.%20Show%20elements%20like%20an%20old%20bus%2C%20suitcases%2C%20a%20mother%20holding%20her%20childre.webp9271?alt=media&token=22caadcb-fee8-4cbf-8037-eea1bb95641b",
+		link: "/album/2177412",
+	},
+	{
+		title: "Trabajo como Costurera y Cabeza de Hogar",
+		artist: "Manuela Pineda",
+		cover: "https://firebasestorage.googleapis.com/v0/b/typechat-a0538.appspot.com/o/img%2FDALL%C2%B7E%202024-11-03%2023.14.19%20-%20Album%20cover%20style%20image%20inspired%20by%20elements%20from%20a%20rural%20Colombian%20village%20in%20the%201940s%20and%20a%20family%20migrating%20to%20Bogot%C3%A1%20in%20the%201960s.%20Represent%20a%20wo.webp5821?alt=media&token=bf3eea3e-9225-4773-97b5-c2bf24c63859",
+		link: "/album/2113921",
+	},
 ];
 ---
 <Layout>
@@ -34,17 +45,18 @@ const albums = [
 			</div>
 			
 		</section>
-		<!-- <section>
-			<h2>Álbumes Reproducidos Recientemente</h2>
+		<br>
+		<section>
+			<h2>Historias por escuchar</h2>
 			<div class="album-grid">
 				{
 					albums.map((album) => (
 						<AlbumCard {...album} />
-						<div class="album-card"></div>
+						// <div class="album-card"></div>
 					))
 				}
 			</div>
-		</section> -->
+		</section>
 	</main>
 </Layout>
 
